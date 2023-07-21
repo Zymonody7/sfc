@@ -1,0 +1,54 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 360px;
+	height: 100%;
+	padding: 14px;
+	background-color: #0d294088;
+	z-index: 1000;
+	// background-color: aqua;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	// div {
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	width: 100%;
+	// 	height: 40px;
+	// 	border-radius: 10px;
+	// 	background-color: #2ab2ba;
+	// }
+}
+.category {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 8px;
+	& > div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #0b2931aa;
+		width: 100px;
+		height: 30px;
+	}
+	// flex: 1;
+	// background-color: bisque;
+}
+.main {
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	.turbeId {
+		background: linear-gradient(#0d2940 26%, #2437af);
+		width: 160px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
