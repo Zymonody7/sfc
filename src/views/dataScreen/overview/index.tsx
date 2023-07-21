@@ -6,7 +6,7 @@ import TurbPHM from "./components/TurbPHM";
 import ChartBox from "../components/ChartBox";
 import TurbDesc from "./components/TurbDesc";
 // import TurbModel from "/public/model/32.gltf";
-// import { ConicalColumnChart, WaterLevelPond } from "@jiaminghi/data-view-react";
+import { ScrollBoard } from "@jiaminghi/data-view-react";
 // import * as Cesium from "cesium";
 import {
 	Camera,
@@ -21,8 +21,12 @@ import {
 } from "resium";
 import { Cartesian3, Color, HeightReference } from "cesium";
 import TurbProduct from "./components/TurbProduct";
+import { HOME_URL } from "@/config/config";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const OverViewScreen = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
 	const dataScreenRef = useRef<HTMLDivElement>(null);
 	/* 浏览器监听 resize 事件 */
 	const resize = () => {
@@ -97,6 +101,25 @@ const OverViewScreen = () => {
 		// 	}
 		// };
 	}, []);
+	const logOption = {
+		header: ["列1", "列2", "列3"],
+		data: [
+			["行1列1", "行1列2", "行1列3"],
+			["行2列1", "行2列2", "行2列3"],
+			["行3列1", "行3列2", "行3列3"],
+			["行4列1", "行4列2", "行4列3"],
+			["行5列1", "行5列2", "行5列3"],
+			["行6列1", "行6列2", "行6列3"],
+			["行7列1", "行7列2", "行7列3"],
+			["行8列1", "行8列2", "行8列3"],
+			["行9列1", "行9列2", "行9列3"],
+			["行10列1", "行10列2", "行10列3"]
+		],
+		index: true,
+		columnWidth: [50],
+		align: ["center"],
+		carousel: "page"
+	};
 	return (
 		<div className="dataScreen-container">
 			<div className="dataScreen" ref={dataScreenRef}>
@@ -112,7 +135,7 @@ const OverViewScreen = () => {
 									src="https://easyv.assets.dtstack.com/data/assets/jzmb2tfaxe_1631781760965_b7kmqg64rs.gif"
 									style={{ width: "18px", height: "22px" }}
 								></img>
-								<div style={{ marginRight: "16px" }}>深圳</div>
+								<div style={{ marginRight: "16px" }}>太原</div>
 								<img
 									src="https://easyv.assets.dtstack.com/components/static-image/weatherV2/%E5%A4%9A%E4%BA%91.png"
 									style={{ width: "30px", height: "30px" }}
@@ -120,6 +143,10 @@ const OverViewScreen = () => {
 								<div>28°c</div>
 							</div>
 						</div>
+					</div>
+					<div className="header-right">
+						<div onClick={() => navigate(HOME_URL)}>首页</div>
+						<div className={`${location.pathname === "/dataScreen/index" ? "active" : ""}`}>可视化大屏</div>
 					</div>
 				</div>
 				<div className="dataScreen-main">
@@ -190,7 +217,7 @@ const OverViewScreen = () => {
 										/>
 									</Entity> */}
 								</Viewer>
-								<div id={"popoverBox"} style={{ width: 70, height: 70, position: "absolute", zIndex: 9999, opacity: 0 }}>
+								<div id={"popoverBox"} style={{ width: 70, height: 70, position: "absolute", zIndex: 9999, opacity: 1 }}>
 									23r524r24r5
 								</div>
 							</div>
@@ -204,6 +231,11 @@ const OverViewScreen = () => {
 					</div>
 					<div className="dataScreen-main-bottom">
 						<TurbProduct />
+						<ChartBox width={510} height={360} title="风机运行日志">
+							<div style={{ height: "100%", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+								<ScrollBoard config={logOption} style={{ width: "480px", height: "280px" }} />
+							</div>
+						</ChartBox>
 					</div>
 				</div>
 			</div>

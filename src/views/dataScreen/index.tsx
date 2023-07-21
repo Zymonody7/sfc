@@ -52,7 +52,7 @@ const DataScreen = () => {
 									src="https://easyv.assets.dtstack.com/data/assets/jzmb2tfaxe_1631781760965_b7kmqg64rs.gif"
 									style={{ width: "18px", height: "22px" }}
 								></img>
-								<div style={{ marginRight: "16px" }}>深圳</div>
+								<div style={{ marginRight: "16px" }}>太原</div>
 								<img
 									src="https://easyv.assets.dtstack.com/components/static-image/weatherV2/%E5%A4%9A%E4%BA%91.png"
 									style={{ width: "30px", height: "30px" }}

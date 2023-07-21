@@ -1,6 +1,6 @@
 import { useTimes } from "@/hooks/useTime";
 import React, { useEffect, useLayoutEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import * as THREE from "three";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { OrbitControls } from "@three-ts/orbit-controls";
@@ -8,7 +8,14 @@ import "./index.less";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import ChartBox from "../components/ChartBox";
 import ReactECharts from "echarts-for-react";
+import Situation from "./components/Situation";
+import Predict from "./components/Predict";
+import { HOME_URL } from "@/config/config";
 const TurbDetail = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
+	console.log(location);
+
 	const params = useParams();
 	const dataScreenRef = useRef<HTMLDivElement>(null);
 	/* 浏览器监听 resize 事件 */
@@ -148,7 +155,7 @@ const TurbDetail = () => {
 				<div className="dataScreen-header">
 					<div className="header-left">
 						<div className="header-title">
-							<h1 style={{ color: "#fff" }}>{params.id}号风机详情</h1>
+							<h1 style={{ color: "#fff" }}>龙源风电预警监控系统</h1>
 						</div>
 						<div className="header-info">
 							<div>当前时间:{time}</div>
@@ -157,7 +164,7 @@ const TurbDetail = () => {
 									src="https://easyv.assets.dtstack.com/data/assets/jzmb2tfaxe_1631781760965_b7kmqg64rs.gif"
 									style={{ width: "18px", height: "22px" }}
 								></img>
-								<div style={{ marginRight: "16px" }}>深圳</div>
+								<div style={{ marginRight: "16px" }}>太原</div>
 								<img
 									src="https://easyv.assets.dtstack.com/components/static-image/weatherV2/%E5%A4%9A%E4%BA%91.png"
 									style={{ width: "30px", height: "30px" }}
@@ -166,15 +173,22 @@ const TurbDetail = () => {
 							</div>
 						</div>
 					</div>
+					<div className="header-right">
+						<div onClick={() => navigate(HOME_URL)}>首页</div>
+						<div>可视化大屏</div>
+					</div>
 				</div>
 				<div
 					className="dataScreen-main"
 					style={{ position: "relative", display: "flex", width: "100%", height: "100%", alignItems: "flex-end" }}
 				>
 					<div id="container" style={{ position: "absolute", left: "-300px", right: 0 }}></div>
-					<div className="">
-						<ChartBox width={700} height={500} title="风机实时信息">
-							{/* <ReactECharts /> */}
+					<div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+						<ChartBox width={700} height={450} title="风机实时信息">
+							<Situation />
+						</ChartBox>
+						<ChartBox width={700} height={500} title="风机统计数据">
+							<Predict />
 						</ChartBox>
 					</div>
 				</div>

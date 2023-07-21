@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, Form, Input, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Login } from "@/api/interface";
-// import { loginApi } from "@/api/modules/login";
+import { loginApi } from "@/api/modules/login";
 import { HOME_URL } from "@/config/config";
 import { connect } from "react-redux";
 import { setToken } from "@/redux/modules/global/action";
@@ -23,8 +23,8 @@ const LoginForm = (props: any) => {
 		try {
 			setLoading(true);
 			loginForm.password = md5(loginForm.password);
-			// const { data } = await loginApi(loginForm);
-			setToken(123);
+			const { data } = await loginApi(loginForm);
+			setToken(data?.access_token);
 			setTabsList([]);
 			message.success("登录成功！");
 			navigate(HOME_URL);

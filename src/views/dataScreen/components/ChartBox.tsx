@@ -7,15 +7,18 @@ interface Props {
 	title: string;
 	children?: any;
 	className?: any;
+	style?: any;
 }
-const ChartBox: React.FC<Props> = ({ width, height, title, children, className }) => {
+const ChartBox: React.FC<Props> = ({ width, height, title, children, className, style }) => {
 	return (
 		<BorderBox8
 			reverse="{true}"
 			className={`${styles.container} ${className}`}
 			style={{ width: width + "px", height: height + "px" }}
 		>
-			<div className={styles.title}>{title}</div>
+			<div className={styles.title} style={style}>
+				{title}
+			</div>
 			{children}
 		</BorderBox8>
 	);
