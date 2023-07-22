@@ -35,6 +35,9 @@ const TurbPHM = () => {
 						<div>风场数目</div>
 						<div className={`${styles.blue} ${styles.point}`}></div>
 					</div>
+					<div className={styles.stat}>
+						<span style={{ fontSize: "20px", color: "#fff" }}>70</span>
+					</div>
 				</div>
 			</div>
 		</ChartBox>

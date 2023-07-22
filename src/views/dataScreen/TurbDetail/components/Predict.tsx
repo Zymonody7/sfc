@@ -5,14 +5,14 @@ import cloneDeep from "lodash.clonedeep";
 const Page: React.FC = () => {
 	const DEFAULT_OPTION = {
 		legend: {
-			data: ["预购队列"]
+			data: ["实时功率"]
 		},
-		// grid: {
-		// 	top: 60,
-		// 	left: 30,
-		// 	right: 60,
-		// 	bottom: 30
-		// },
+		grid: {
+			top: 40,
+			left: 100,
+			right: 100,
+			bottom: 40
+		},
 		// dataZoom: {
 		// 	show: false,
 		// 	start: 0,
@@ -66,8 +66,6 @@ const Page: React.FC = () => {
 				type: "value",
 				scale: true,
 				name: "实际功率",
-				max: 1200,
-				min: 0,
 				boundaryGap: [0.2, 0.2],
 				splitLine: {
 					show: false
@@ -80,17 +78,17 @@ const Page: React.FC = () => {
 				}
 			}
 		],
-		dataZoom: [
-			// {
-			// 	type: "inside",
-			// 	start: 0,
-			// 	end: 20
-			// },
-			// {
-			// 	start: 0,
-			// 	end: 20
-			// }
-		],
+		// dataZoom: [
+		// 	{
+		// 		type: "inside",
+		// 		start: 0,
+		// 		end: 20
+		// 	},
+		// 	{
+		// 		start: 0,
+		// 		end: 20
+		// 	}
+		// ],
 		series: [
 			{
 				name: "实际功率",
@@ -101,7 +99,7 @@ const Page: React.FC = () => {
 					let res = [];
 					let len = 0;
 					while (len < 30) {
-						res.push((Math.random() * 1000 + 5).toFixed(1) - 0);
+						res.push((Math.random() * 50000 + 5).toFixed(1) - 0);
 						len++;
 					}
 					return res;
@@ -120,7 +118,7 @@ const Page: React.FC = () => {
 		const data0 = newOption.series[0].data;
 		// const data1 = newOption.series[1].data;
 		data0.shift();
-		data0.push(Math.round(Math.random() * 1000));
+		data0.push(Math.round(Math.random() * 50000));
 		// data1.shift();
 		// data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
 
@@ -140,7 +138,7 @@ const Page: React.FC = () => {
 		return () => clearInterval(timer);
 	});
 
-	return <ReactECharts option={option} style={{ height: 400 }} />;
+	return <ReactECharts option={option} style={{ height: 450 }} />;
 };
 
 export default Page;

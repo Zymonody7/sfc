@@ -17,10 +17,133 @@ export const loginApi = (params: Login.ReqLoginForm) => {
 
 // * 获取按钮权限
 export const getAuthorButtons = () => {
-	return http.get<Login.ResAuthButtons>(PORT1 + `/auth/buttons`);
+	return {
+		msg: "success",
+		code: 0,
+		list: [
+			{
+				path: "/home/index",
+				title: "首页",
+				icon: "HomeOutlined",
+				children: []
+			},
+			{
+				path: "/dataScreen/index",
+				title: "数据大屏",
+				icon: "AreaChartOutlined",
+				children: []
+			},
+			{
+				path: "/proTable",
+				title: "管理中心",
+				icon: "TableOutlined",
+				children: [
+					{
+						path: "/proTable/useHooks",
+						title: "景区管理",
+						icon: "AppstoreOutlined",
+						children: null
+					},
+					{
+						path: "/proTable/useComponent",
+						title: "游客管理",
+						icon: "AppstoreOutlined",
+						children: null
+					}
+				]
+			},
+			{
+				path: "/error",
+				title: "错误页面",
+				icon: "ExclamationCircleOutlined",
+				children: [
+					{
+						path: "/404",
+						title: "404页面",
+						icon: "AppstoreOutlined",
+						children: null
+					},
+					{
+						path: "/403",
+						title: "403页面",
+						icon: "AppstoreOutlined",
+						children: null
+					},
+					{
+						path: "/500",
+						title: "500页面",
+						icon: "AppstoreOutlined",
+						children: null
+					}
+				]
+			}
+		]
+	};
 };
 
 // * 获取菜单列表
 export const getMenuList = () => {
-	return http.get<Menu.MenuOptions[]>(PORT1 + `/menu/list`);
+	return {
+		msg: "success",
+		code: 0,
+		list: [
+			{
+				path: "/home/index",
+				title: "首页",
+				icon: "HomeOutlined",
+				children: []
+			},
+			{
+				path: "/dataScreen/index",
+				title: "数据大屏",
+				icon: "AreaChartOutlined",
+				children: []
+			},
+			{
+				path: "/proTable",
+				title: "管理中心",
+				icon: "TableOutlined",
+				children: [
+					{
+						path: "/proTable/useHooks",
+						title: "景区管理",
+						icon: "AppstoreOutlined",
+						children: null
+					},
+					{
+						path: "/proTable/useComponent",
+						title: "游客管理",
+						icon: "AppstoreOutlined",
+						children: null
+					}
+				]
+			},
+			{
+				path: "/error",
+				title: "错误页面",
+				icon: "ExclamationCircleOutlined",
+				children: [
+					{
+						path: "/404",
+						title: "404页面",
+						icon: "AppstoreOutlined",
+						children: null
+					},
+					{
+						path: "/403",
+						title: "403页面",
+						icon: "AppstoreOutlined",
+						children: null
+					},
+					{
+						path: "/500",
+						title: "500页面",
+						icon: "AppstoreOutlined",
+						children: null
+					}
+				]
+			}
+		]
+	};
+	// return http.get<Menu.MenuOptions[]>(PORT1 + `/menu/list`);
 };

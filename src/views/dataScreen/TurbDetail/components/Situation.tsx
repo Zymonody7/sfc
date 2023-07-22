@@ -5,41 +5,41 @@ const Situation = () => {
 	const windConfig = {
 		series: [
 			{
-				name: "Pressure",
 				type: "gauge",
 				startAngle: 90,
 				endAngle: -270,
-				detail: {
-					valueAnimation: true,
-					formatter: " "
-				},
-				progress: {
-					show: true,
-					overlap: false,
-					roundCap: true,
-					clip: false
-				},
 				axisLine: {
 					lineStyle: {
-						width: 20
+						width: 15,
+						color: [[1, "#07a19366"]]
 					}
 				},
-				splitLine: {
-					show: false,
-					distance: 0,
-					length: 10
+				pointer: {
+					itemStyle: {
+						color: "blue"
+					}
 				},
 				axisTick: {
-					show: false
+					show: false,
+					lineStyle: {
+						color: "#fff",
+						width: 2
+					}
 				},
 				axisLabel: {
-					show: false,
-					distance: 50
+					show: false
+				},
+				splitLine: {
+					show: false
+				},
+				detail: {
+					valueAnimation: true,
+					formatter: " ",
+					color: "inherit"
 				},
 				data: [
 					{
-						value: 50
-						// name: "SCORE"
+						value: 70
 					}
 				]
 			}
@@ -51,7 +51,7 @@ const Situation = () => {
 				<div className={styles.title}>
 					<div style={{ color: "#ddd" }}>实时风速</div>
 					<div>
-						<span style={{ fontSize: "20px" }}>1.3</span>
+						<span style={{ fontSize: "20px" }}></span>
 						<span style={{ color: "#ddd" }}>m/s</span>
 					</div>
 				</div>
@@ -86,11 +86,30 @@ const Situation = () => {
 					</div>
 				</div>
 				<div className={styles.lineContainer}>
-					<div className={styles.line} style={{ width: `${(58 / 100) * 100}%` }}></div>
+					<div
+						className={`${styles.line} ${98 / 100 > 0.6 && styles.line__warn}  ${98 / 100 > 0.9 && styles.line__danger}`}
+						style={{ width: `${(98 / 100) * 100}%` }}
+					></div>
 				</div>
 			</div>
 			<div className={styles.right}>
 				<ReactECharts option={windConfig}></ReactECharts>
+				<div style={{ display: "flex", alignItems: "center" }}>
+					<div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
+						<div>实时风向</div>
+						<div>
+							<span>88</span>
+							<span>°</span>
+						</div>
+					</div>
+					<div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
+						<div>迎风面比例</div>
+						<div>
+							<span>23</span>
+							<span>%</span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

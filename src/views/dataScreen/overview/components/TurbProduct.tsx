@@ -201,7 +201,6 @@ const TurbProduct = () => {
 			{
 				name: "业内平均值",
 				type: "line",
-				stack: "总量",
 				data: [124, 171, 146, 164, 192],
 				showSymbol: false,
 				smooth: true,
@@ -214,7 +213,7 @@ const TurbProduct = () => {
 						},
 						{
 							offset: 1,
-							color: "rgb(1, 191, 236)"
+							color: "rgba(128, 255, 164, 0)"
 						}
 					])
 				}
@@ -222,7 +221,6 @@ const TurbProduct = () => {
 			{
 				name: "龙源风电",
 				type: "line",
-				stack: "总量",
 				data: [220, 265, 191, 234, 290],
 				showSymbol: false,
 				smooth: true,
@@ -235,7 +233,7 @@ const TurbProduct = () => {
 						},
 						{
 							offset: 1,
-							color: "rgb(116, 21, 219)"
+							color: "rgba(55, 162, 255, 0)"
 						}
 					])
 				}

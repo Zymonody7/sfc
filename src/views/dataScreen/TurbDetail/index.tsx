@@ -175,7 +175,7 @@ const TurbDetail = () => {
 					</div>
 					<div className="header-right">
 						<div onClick={() => navigate(HOME_URL)}>首页</div>
-						<div>可视化大屏</div>
+						<div onClick={() => navigate("/dataScreen/index")}>可视化大屏</div>
 					</div>
 				</div>
 				<div

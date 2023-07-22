@@ -1,5 +1,5 @@
 /* eslint-disable react/no-children-prop */
-import React, { useRef, useLayoutEffect, useEffect } from "react";
+import React, { useRef, useLayoutEffect, useEffect, useState } from "react";
 import { useTimes } from "@/hooks/useTime";
 import "./index.less";
 import TurbPHM from "./components/TurbPHM";
@@ -102,7 +102,6 @@ const OverViewScreen = () => {
 		// };
 	}, []);
 	const logOption = {
-		header: ["列1", "列2", "列3"],
 		data: [
 			["行1列1", "行1列2", "行1列3"],
 			["行2列1", "行2列2", "行2列3"],
@@ -114,12 +113,11 @@ const OverViewScreen = () => {
 			["行8列1", "行8列2", "行8列3"],
 			["行9列1", "行9列2", "行9列3"],
 			["行10列1", "行10列2", "行10列3"]
-		],
-		index: true,
-		columnWidth: [50],
-		align: ["center"],
-		carousel: "page"
+		]
 	};
+	const [showModal, setShowModal] = useState(false);
+	const [activeTurb, setActiveTurb] = useState(1);
+	const handleDescClick = id => {};
 	return (
 		<div className="dataScreen-container">
 			<div className="dataScreen" ref={dataScreenRef}>
@@ -163,7 +161,7 @@ const OverViewScreen = () => {
 									geocoder={false}
 									fullscreenButton={false}
 									infoBox={false}
-									selectionIndicator={false}
+									// selectionIndicator={false}
 									navigationInstructionsInitiallyVisible={false}
 									id="cesiumViewer"
 									style={{
@@ -217,16 +215,27 @@ const OverViewScreen = () => {
 										/>
 									</Entity> */}
 								</Viewer>
-								<div id={"popoverBox"} style={{ width: 70, height: 70, position: "absolute", zIndex: 9999, opacity: 1 }}>
-									23r524r24r5
-								</div>
+								<ChartBox width={280} height={280} title={activeTurb + ""} />
+								{/* <div
+									style={{
+										width: "280px",
+										height: "280px",
+										position: "absolute",
+										top: "30px",
+										zIndex: 9999,
+										opacity: 1,
+										backgroundColor: "red"
+									}}
+								></div> */}
 							</div>
-							<TurbDesc></TurbDesc>
+							<TurbDesc onDescClick={id => handleDescClick(id)}></TurbDesc>
 						</div>
 
 						<div style={{ display: "flex", flexDirection: "column", width: "510px" }}>
 							<TurbPHM />
-							<ChartBox width={510} height={360} title="业务系统智慧物流"></ChartBox>
+							<ChartBox width={510} height={360} title="企业概况">
+								<div></div>
+							</ChartBox>
 						</div>
 					</div>
 					<div className="dataScreen-main-bottom">
