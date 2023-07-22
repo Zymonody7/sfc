@@ -14,7 +14,7 @@ const ChartBox: React.FC<Props> = ({ width, height, title, children, className, 
 		<BorderBox8
 			reverse="{true}"
 			className={`${styles.container} ${className}`}
-			style={{ width: width + "px", height: height + "px" }}
+			style={{ width: width + "px", height: height + "px", transition: "all 0.5s ease-out;" }}
 		>
 			<div className={styles.title} style={style}>
 				{title}

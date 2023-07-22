@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import ReactECharts from "echarts-for-react";
 import styles from "./Situation.module.less";
-const Situation = () => {
+const Situation: any = ({ data }) => {
 	const windConfig = {
 		series: [
 			{
@@ -51,44 +52,61 @@ const Situation = () => {
 				<div className={styles.title}>
 					<div style={{ color: "#ddd" }}>实时风速</div>
 					<div>
-						<span style={{ fontSize: "20px" }}></span>
+						<span style={{ fontSize: "20px" }}>{data.wspeed}</span>
 						<span style={{ color: "#ddd" }}>m/s</span>
 					</div>
 				</div>
 				<div className={styles.lineContainer}>
-					<div className={styles.line}></div>
+					<div
+						className={`${styles.line} ${data.wspeed / 25 > 0.6 && styles.line__warn}  ${
+							data.wspeed / 25 > 0.9 && styles.line__danger
+						}`}
+						style={{ width: `${(data.wspeed / 25) * 100}%` }}
+					></div>
 				</div>
 				<div className={styles.title}>
 					<div style={{ color: "#ddd" }}>环境温度</div>
 					<div>
-						<span style={{ fontSize: "20px" }}>18</span>
-						<span style={{ color: "#ddd" }}>℃</span>
-					</div>
-				</div>
-				<div className={styles.lineContainer}>
-					<div className={styles.line}></div>
-				</div>
-				<div className={styles.title}>
-					<div style={{ color: "#ddd" }}>环境湿度</div>
-					<div>
-						<span style={{ fontSize: "20px" }}>28</span>
-						<span style={{ color: "#ddd" }}>°</span>
-					</div>
-				</div>
-				<div className={styles.lineContainer}>
-					<div className={styles.line}></div>
-				</div>
-				<div className={styles.title}>
-					<div style={{ color: "#ddd" }}>机器温度</div>
-					<div>
-						<span style={{ fontSize: "20px" }}>58</span>
+						<span style={{ fontSize: "20px" }}>{data.temp}</span>
 						<span style={{ color: "#ddd" }}>℃</span>
 					</div>
 				</div>
 				<div className={styles.lineContainer}>
 					<div
-						className={`${styles.line} ${98 / 100 > 0.6 && styles.line__warn}  ${98 / 100 > 0.9 && styles.line__danger}`}
-						style={{ width: `${(98 / 100) * 100}%` }}
+						className={`${styles.line} ${data.temp / 40 > 0.6 && styles.line__warn}  ${
+							data.temp / 40 > 0.9 && styles.line__danger
+						}`}
+						style={{ width: `${(data.temp / 40) * 100}%` }}
+					></div>
+				</div>
+				<div className={styles.title}>
+					<div style={{ color: "#ddd" }}>环境湿度</div>
+					<div>
+						<span style={{ fontSize: "20px" }}>{data.sd}</span>
+						<span style={{ color: "#ddd" }}>°</span>
+					</div>
+				</div>
+				<div className={styles.lineContainer}>
+					<div
+						className={`${styles.line} ${data.sd / 100 > 0.6 && styles.line__warn}  ${
+							data.sd / 100 > 0.9 && styles.line__danger
+						}`}
+						style={{ width: `${(data.sd / 100) * 100}%` }}
+					></div>
+				</div>
+				<div className={styles.title}>
+					<div style={{ color: "#ddd" }}>机器温度</div>
+					<div>
+						<span style={{ fontSize: "20px" }}>{data.inTemp}</span>
+						<span style={{ color: "#ddd" }}>℃</span>
+					</div>
+				</div>
+				<div className={styles.lineContainer}>
+					<div
+						className={`${styles.line} ${data.inTemp / 100 > 0.6 && styles.line__warn}  ${
+							data.inTemp / 100 > 0.9 && styles.line__danger
+						}`}
+						style={{ width: `${(data.inTemp / 100) * 100}%` }}
 					></div>
 				</div>
 			</div>

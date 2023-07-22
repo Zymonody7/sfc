@@ -37,6 +37,7 @@ const DataScreen = () => {
 	}, []);
 
 	const { time } = useTimes();
+
 	return (
 		<div className="dataScreen-container">
 			<div className="dataScreen" ref={dataScreenRef}>
@@ -57,7 +58,7 @@ const DataScreen = () => {
 									src="https://easyv.assets.dtstack.com/components/static-image/weatherV2/%E5%A4%9A%E4%BA%91.png"
 									style={{ width: "30px", height: "30px" }}
 								/>
-								<div>28°c</div>
+								<div>20°c</div>
 							</div>
 						</div>
 					</div>

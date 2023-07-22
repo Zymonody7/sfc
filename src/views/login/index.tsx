@@ -15,7 +15,9 @@ const Login = () => {
 				<div className="login-form">
 					<div className="login-logo">
 						<img className="login-icon" src={logo} alt="logo" />
-						<span className="logo-text">Hooks-Admin</span>
+						<span style={{ fontSize: "24px" }} className="logo-text">
+							龙源风电预测监控系统
+						</span>
 					</div>
 					<LoginForm />
 				</div>

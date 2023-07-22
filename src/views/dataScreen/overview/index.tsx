@@ -23,10 +23,12 @@ import { Cartesian3, Color, HeightReference } from "cesium";
 import TurbProduct from "./components/TurbProduct";
 import { HOME_URL } from "@/config/config";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { turbeConfig } from "@/config/turbeConfig";
 const OverViewScreen = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
+	// const data = turbeConfig[location.pathname]
+
 	const dataScreenRef = useRef<HTMLDivElement>(null);
 	/* 浏览器监听 resize 事件 */
 	const resize = () => {
@@ -117,7 +119,23 @@ const OverViewScreen = () => {
 	};
 	const [showModal, setShowModal] = useState(false);
 	const [activeTurb, setActiveTurb] = useState(1);
-	const handleDescClick = id => {};
+	const handleDescClick = id => {
+		setActiveTurb(id);
+		setShowModal(true);
+	};
+	let elem: any;
+	let navBtn: any;
+	useEffect(() => {
+		elem = document.querySelector("elem");
+		navBtn = document.querySelector("nav");
+	}, []);
+	// document.addEventListener("click", e => {
+	// 	console.log(e.target.classList + "");
+
+	// 	if (e.target !== elem || e.target !== navBtn || !(e.target.classList + "").includes("#turbe")) {
+	// 		setShowModal(false);
+	// 	}
+	// });
 	return (
 		<div className="dataScreen-container">
 			<div className="dataScreen" ref={dataScreenRef}>
@@ -175,18 +193,29 @@ const OverViewScreen = () => {
 									<Camera onChange={handleChange} />
 									<CameraFlyTo
 										duration={1}
-										destination={new Cartesian3(-1727217.330142537, 4500698.706174378, 4162348.205198835)}
+										destination={new Cartesian3(-1727417.330142537, 4500398.706174378, 4162748.205198835)}
 										orientation={{
-											heading: 3.4695846104228423,
+											heading: 3.4615846104228423,
 											// 视角
-											pitch: -0.2803732683468909,
-											roll: 6.283176738373746
+											pitch: -0.2603732683468909,
+											roll: 6.263176738373746
 										}}
 										once={true}
 									/>
 									<Entity
 										onClick={e => handleClick(e)}
-										position={new Cartesian3(-1727280.330142537, 4500840.706174378, 4162200.205198835)}
+										position={new Cartesian3(-1727280.330142537, 4500810.706174378, 4162200.205198835)}
+									>
+										<ModelGraphics
+											uri={"/public/model/turbe.glb"}
+											color={new Color(1, 0, 0)}
+											silhouetteColor={new Color(1, 0, 0)}
+											silhouetteSize={3}
+										/>
+									</Entity>
+									<Entity
+										onClick={e => handleClick(e)}
+										position={new Cartesian3(-1727280.330142537, 4500870.706174378, 4162150.205198835)}
 									>
 										<ModelGraphics
 											uri={"/public/model/turbe.glb"}
@@ -195,6 +224,44 @@ const OverViewScreen = () => {
 											silhouetteSize={3}
 										/>
 									</Entity>
+									<Entity
+										onClick={e => handleClick(e)}
+										position={new Cartesian3(-1727280.330142537, 4500950.706174378, 4162080.205198835)}
+									>
+										<ModelGraphics
+											uri={"/public/model/turbe.glb"}
+											color={new Color(0, 1, 1)}
+											silhouetteColor={new Color(0, 1, 1)}
+											silhouetteSize={3}
+										/>
+									</Entity>
+									<Entity
+										onClick={e => handleClick(e)}
+										position={new Cartesian3(-1727280.330142537, 4501000.706174378, 4162040.205198835)}
+									>
+										<ModelGraphics
+											uri={"/public/model/turbe.glb"}
+											color={new Color(0, 1, 1)}
+											silhouetteColor={new Color(0, 1, 1)}
+											silhouetteSize={3}
+										/>
+									</Entity>
+									{/* {turbeConfig.map((item, index) => {
+										return (
+											<Entity
+												key={item.id}
+												onClick={e => handleClick(e)}
+												position={new Cartesian3(-1727280.330142537 + item.lat, 4500840.706174378 + item.lon, 4162200.205198835)}
+											>
+												<ModelGraphics
+													uri={"/public/model/turbe.glb"}
+													color={item.status ? new Color(0, 1, 1) : new Color(1, 0, 0)}
+													silhouetteColor={item.status ? new Color(0, 1, 1) : new Color(1, 0, 0)}
+													silhouetteSize={3}
+												/>
+											</Entity>
+										);
+									})} */}
 									{/* <Entity
 										onClick={e => handleClick(e)}
 										position={new Cartesian3(-1727600.330142537, 4500800.706174678, 4162200.205198835)}
@@ -215,7 +282,44 @@ const OverViewScreen = () => {
 										/>
 									</Entity> */}
 								</Viewer>
-								<ChartBox width={280} height={280} title={activeTurb + ""} />
+								<ChartBox id={"elem"} width={`${showModal ? 280 : 0}`} height={280} title={activeTurb + "号风机"}>
+									<div style={{ padding: "20px 40px", display: "flex", flexDirection: "column", gap: "16px" }}>
+										<div style={{ display: "flex", justifyContent: "space-between" }}>
+											<div>状态</div>
+											<div>运行中</div>
+										</div>
+										<div style={{ display: "flex", justifyContent: "space-between" }}>
+											<div>环境温度</div>
+											<div>27℃</div>
+										</div>
+										<div style={{ display: "flex", justifyContent: "space-between" }}>
+											<div>机舱温度</div>
+											<div>58℃</div>
+										</div>
+										<div style={{ display: "flex", justifyContent: "space-between" }}>
+											<div>环境湿度</div>
+											<div>27°</div>
+										</div>
+										<div
+											id="nav"
+											style={{
+												width: "100%",
+												height: "40px",
+												borderRadius: "8px",
+												display: "flex",
+												justifyContent: "center",
+												alignItems: "center",
+												background: "linear-gradient(#0d2940 26%, #2437af)",
+												cursor: "pointer"
+											}}
+											onClick={() => {
+												navigate(`/dataScreen/${activeTurb}`);
+											}}
+										>
+											查看详情
+										</div>
+									</div>
+								</ChartBox>
 								{/* <div
 									style={{
 										width: "280px",
@@ -228,7 +332,7 @@ const OverViewScreen = () => {
 									}}
 								></div> */}
 							</div>
-							<TurbDesc onDescClick={id => handleDescClick(id)}></TurbDesc>
+							<TurbDesc config={turbeConfig} onDescClick={id => handleDescClick(id)}></TurbDesc>
 						</div>
 
 						<div style={{ display: "flex", flexDirection: "column", width: "510px" }}>

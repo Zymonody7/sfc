@@ -13,11 +13,6 @@ const Page: React.FC = () => {
 			right: 100,
 			bottom: 40
 		},
-		// dataZoom: {
-		// 	show: false,
-		// 	start: 0,
-		// 	end: 100
-		// },
 		visualMap: {
 			show: false,
 			min: 0,
@@ -48,18 +43,6 @@ const Page: React.FC = () => {
 					return res;
 				})()
 			}
-			// {
-			// 	type: "category",
-			// 	boundaryGap: true,
-			// 	data: (function () {
-			// 		let res = [];
-			// 		let len = 50;
-			// 		while (len--) {
-			// 			res.push(50 - len + 1);
-			// 		}
-			// 		return res;
-			// 	})()
-			// }
 		],
 		yAxis: [
 			{

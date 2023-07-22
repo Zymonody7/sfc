@@ -34,21 +34,25 @@ export const getAuthorButtons = () => {
 				children: []
 			},
 			{
-				path: "/proTable",
+				path: "/turbe",
 				title: "管理中心",
 				icon: "TableOutlined",
 				children: [
 					{
-						path: "/proTable/useHooks",
-						title: "景区管理",
+						path: "/turbe/admin",
+						title: "风机管理",
 						icon: "AppstoreOutlined",
 						children: null
 					},
 					{
-						path: "/proTable/useComponent",
-						title: "游客管理",
-						icon: "AppstoreOutlined",
-						children: null
+						path: "/turbe/log",
+						title: "日志信息",
+						icon: "AppstoreOutlined"
+					},
+					{
+						path: "/turbe/upload",
+						title: "上传预测",
+						icon: "AppstoreOutlined"
 					}
 				]
 			},
@@ -60,20 +64,17 @@ export const getAuthorButtons = () => {
 					{
 						path: "/404",
 						title: "404页面",
-						icon: "AppstoreOutlined",
-						children: null
+						icon: "AppstoreOutlined"
 					},
 					{
 						path: "/403",
 						title: "403页面",
-						icon: "AppstoreOutlined",
-						children: null
+						icon: "AppstoreOutlined"
 					},
 					{
 						path: "/500",
 						title: "500页面",
-						icon: "AppstoreOutlined",
-						children: null
+						icon: "AppstoreOutlined"
 					}
 				]
 			}
@@ -100,21 +101,25 @@ export const getMenuList = () => {
 				children: []
 			},
 			{
-				path: "/proTable",
+				path: "/turbe",
 				title: "管理中心",
 				icon: "TableOutlined",
 				children: [
 					{
-						path: "/proTable/useHooks",
-						title: "景区管理",
+						path: "/turbe/admin",
+						title: "风机管理",
 						icon: "AppstoreOutlined",
 						children: null
 					},
 					{
-						path: "/proTable/useComponent",
-						title: "游客管理",
-						icon: "AppstoreOutlined",
-						children: null
+						path: "/turbe/log",
+						title: "日志信息",
+						icon: "AppstoreOutlined"
+					},
+					{
+						path: "/turbe/upload",
+						title: "上传预测",
+						icon: "AppstoreOutlined"
 					}
 				]
 			},
@@ -126,20 +131,17 @@ export const getMenuList = () => {
 					{
 						path: "/404",
 						title: "404页面",
-						icon: "AppstoreOutlined",
-						children: null
+						icon: "AppstoreOutlined"
 					},
 					{
 						path: "/403",
 						title: "403页面",
-						icon: "AppstoreOutlined",
-						children: null
+						icon: "AppstoreOutlined"
 					},
 					{
 						path: "/500",
 						title: "500页面",
-						icon: "AppstoreOutlined",
-						children: null
+						icon: "AppstoreOutlined"
 					}
 				]
 			}

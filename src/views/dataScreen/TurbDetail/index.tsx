@@ -11,11 +11,11 @@ import ReactECharts from "echarts-for-react";
 import Situation from "./components/Situation";
 import Predict from "./components/Predict";
 import { HOME_URL } from "@/config/config";
+import { turbeConfig } from "@/config/turbeConfig";
 const TurbDetail = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	console.log(location);
-
+	const data = turbeConfig[parseInt(location.pathname.split("/")[2]) - 1];
 	const params = useParams();
 	const dataScreenRef = useRef<HTMLDivElement>(null);
 	/* 浏览器监听 resize 事件 */
@@ -185,7 +185,7 @@ const TurbDetail = () => {
 					<div id="container" style={{ position: "absolute", left: "-300px", right: 0 }}></div>
 					<div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
 						<ChartBox width={700} height={450} title="风机实时信息">
-							<Situation />
+							<Situation data={data} />
 						</ChartBox>
 						<ChartBox width={700} height={500} title="风机统计数据">
 							<Predict />
